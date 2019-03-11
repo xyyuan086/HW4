@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+<script src = "db_html.json"></script>
+<h1>Select Bus</h1>
+<select id = "selectBus" onchange="ChangeList()"></select>
+<div id = "allbus"></div>
+<script>
+
+function getID(item){
+    return item.id
+}
+var busID = data.vehicles.map(getID);
+var unique = [];
+
+var result = busID.forEach(function(bus){
+    if(unique.includes(bus)){
+        unique;
+    }
+    else{
+        unique.push(bus);
+    };
+});
+console.log(unique);
+
+var selectBus = document.getElementById('selectBus');
+for (i = 0; i < unique.length; i++){
+    var option = document.createElement("option");
+    option.value = unique[i];
+    option.innerHTML = unique[i];
+    console.log(option)
+    selectBus.appendChild(option);
+};
+
+
+var ChangeList = function(){
+    var buslist = document.getElementById("selectBus");
+    var selbus = buslist.options[buslist.selectedIndex].value;
+    data.vehicles.forEach(function(item){
+        if(item.id === selbus){
+            allbus.push(item);
+        }
+    })
+    console.log(allbus);
+    document.getElementById("allbus").innerHTML = JSON.stringify(allbus);
+};
+
+
+
+</script>
+</html>
+

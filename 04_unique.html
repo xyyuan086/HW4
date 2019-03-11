@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<script src = "db_html.json"></script>
+<h1>Select Bus</h1>
+<select id = "selectBus"></select>
+
+<script>
+
+function getID(item){
+    return item.id
+}
+var busID = data.vehicles.map(getID);
+var unique = [];
+
+var result = busID.forEach(function(bus){
+    if(unique.includes(bus)){
+        unique;
+    }
+    else{
+        unique.push(bus);
+    };
+});
+
+console.log(unique);
+
+var selectBus = document.getElementById('selectBus');
+for (i = 0; i < unique.length; i++){
+    var option = document.createElement("option");
+    option.value = unique[i];
+    option.innerHTML = unique[i];
+    console.log(option)
+    selectBus.appendChild(option);
+};
+
+</script>
+</html>
+
